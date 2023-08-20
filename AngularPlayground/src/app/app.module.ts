@@ -5,10 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { NavComponent } from './nav/nav.component';
+import { ContainerComponent } from './container/container.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        NavComponent,
+        ContainerComponent,
+        HeaderComponent,
+        FooterComponent,
     ],
     imports: [
         BrowserModule,
