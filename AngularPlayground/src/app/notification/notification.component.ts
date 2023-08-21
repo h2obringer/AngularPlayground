@@ -6,11 +6,25 @@ import { Component } from '@angular/core';
     //CON: if the template contains any errors, we will not get any compile-time errors.
     //CON: this mixes Typescript code with HTML code (NOT BEST PRACTICES)
     template: `
-<div>
-    <p>This website uses cookies to provide better user experience.
-</div>
+        <div class="notification-div">
+            <p>This website uses cookies to provide better user experience.
+        </div>
     `,
-    styleUrls: ['./notification.component.css']
+    styles: [
+        `
+            .notification-div{
+                margin: 10px 0px;
+                padding: 10px 20px; 
+                background-color: #FAD7A0;
+                text-align: center;
+            }
+        `,
+        `
+            p{
+                font-size: 14px;
+            }
+        `
+    ]
 })
 export class NotificationComponent {
 
