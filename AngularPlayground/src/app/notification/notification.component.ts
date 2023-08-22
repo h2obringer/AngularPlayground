@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     //CON: if the template contains any errors, we will not get any compile-time errors.
     //CON: this mixes Typescript code with HTML code (NOT BEST PRACTICES)
     template: `
-        <div class="alert alert-warning">
+        <div class="alert alert-warning" [hidden]="displayNotification">
             <p>This website uses cookies to provide better user experience.
         </div>
     `,
@@ -27,5 +27,11 @@ import { Component } from '@angular/core';
     ]
 })
 export class NotificationComponent {
+    constructor() { }
 
+    ngOnInit(): void {
+
+    }
+
+    displayNotification: boolean = false;
 }

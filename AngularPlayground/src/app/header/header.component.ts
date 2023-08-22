@@ -14,6 +14,7 @@ export class HeaderComponent {
     }
 
     slogan: string = "Your one stop shop for everything.";
+    source: string = "/assets/shopping.jpg";
 
     getSlogan() {
         return this.slogan;
