@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+    constructor() { }
+
+    ngOnInit(): void {
+
+    }
+
+    slogan: string = "Your one stop shop for everything.";
+
+    getSlogan() {
+        return this.slogan;
+    }
 }
