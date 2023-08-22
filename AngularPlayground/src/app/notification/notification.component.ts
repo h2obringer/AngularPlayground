@@ -6,8 +6,9 @@ import { Component } from '@angular/core';
     //CON: if the template contains any errors, we will not get any compile-time errors.
     //CON: this mixes Typescript code with HTML code (NOT BEST PRACTICES)
     template: `
-        <div class="alert alert-warning" [hidden]="displayNotification">
-            <p>This website uses cookies to provide better user experience.
+        <div class="alert alert-success" [hidden]="isHidden">
+            This website uses cookies to provide better user experience.
+            <div class="close"><button class="btn" (click)="closeNotification()">X</button></div>
         </div>
     `,
     styles: [
@@ -23,6 +24,12 @@ import { Component } from '@angular/core';
             p{
                 font-size: 14px;
             }
+        `,
+        `
+            .close{
+                float: right;
+                margin-top: -15px;
+            }
         `
     ]
 })
@@ -33,5 +40,9 @@ export class NotificationComponent {
 
     }
 
-    displayNotification: boolean = false;
+    isHidden: boolean = false;
+
+    closeNotification() {
+        this.isHidden = true;
+    }
 }
