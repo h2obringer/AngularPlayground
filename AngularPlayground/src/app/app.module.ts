@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SearchComponent } from './search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { SearchComponent } from './search/search.component';
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        FormsModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

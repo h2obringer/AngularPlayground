@@ -12,7 +12,7 @@ export class SearchComponent {
 
     }
 
-    searchValue: string = "";
+    searchValue: string = "iPhone";
 
     changeSearchValue(eventData: Event) {
         this.searchValue = (<HTMLInputElement>eventData.target).value;
