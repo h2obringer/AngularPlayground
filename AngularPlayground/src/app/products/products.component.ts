@@ -30,4 +30,10 @@ export class ProductsComponent {
     getUnavailableCount() {
         return this.products.filter(x => x.available !== 'Available').length;
     }
+
+    productFilterSelection: string = "All";
+
+    onProductFilterChanged(data: string) {
+        this.productFilterSelection = data;
+    }
 }

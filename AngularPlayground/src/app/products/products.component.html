@@ -1,8 +1,10 @@
 <app-search></app-search>
-<app-filter [total]="getProductTotal()" [available]="getAvailableCount()" [unavailable]="getUnavailableCount()">
+<app-filter [total]="getProductTotal()" [available]="getAvailableCount()" [unavailable]="getUnavailableCount()"
+    (selectedFilterChanged)="onProductFilterChanged($event)">
 </app-filter>
-<div *ngFor="let p of products; let i = index">
-    <div class="product-container" [ngStyle]="{backgroundColor: p.available === 'Available' ? '#D5F5E3' : '#FAD8D8'}">
+<ng-container *ngFor="let p of products; let i = index">
+    <div class="product-container" [ngStyle]="{backgroundColor: p.available === 'Available' ? '#D5F5E3' : '#FAD8D8'}"
+        *ngIf="productFilterSelection === 'All' || productFilterSelection === p.available">
         <p>{{ i }}</p>
         <div class="image-container"><img [src]="p.image" alt="" style="max-height: 50px; max-width: 50px"></div>
         <div>
@@ -10,7 +12,8 @@
                 <h6>{{p.name}}</h6>
             </div>
             <div class="detailContainer">
-                <div class="details" [ngStyle]="{color: p.available === 'Available' ? 'Green' : 'Red'}">{{p.available}}
+                <div class="details" [ngStyle]="{color: p.available === 'Available' ? 'Green' : 'Red'}">
+                    {{p.available}}
                 </div>
                 <div class="details"><b>Price:</b> ${{p.price}}</div>
                 <div class="details"><b>Color:</b>{{p.color}}</div>
@@ -24,4 +27,4 @@
             </ng-template>
         </div>
     </div>
-</div>
+</ng-container>
