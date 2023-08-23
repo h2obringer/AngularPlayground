@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     //CON: if the template contains any errors, we will not get any compile-time errors.
     //CON: this mixes Typescript code with HTML code (NOT BEST PRACTICES)
     template: `
-        <div class="alert alert-success" [hidden]="isHidden">
+        <div class="alert alert-success" [ngClass]="{fadeOut: isHidden}">
             This website uses cookies to provide better user experience.
             <div class="close"><button class="btn" (click)="closeNotification()">X</button></div>
         </div>
@@ -29,6 +29,13 @@ import { Component } from '@angular/core';
             .close{
                 float: right;
                 margin-top: -15px;
+            }
+        `,
+        `
+            .fadeOut{
+                visibility: hidden;
+                opacity: 0;
+                transition: visibility 0s 2s, opacity 2s linear;
             }
         `
     ]
