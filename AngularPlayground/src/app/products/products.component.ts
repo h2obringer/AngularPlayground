@@ -18,4 +18,16 @@ export class ProductsComponent {
         { id: 5, name: 'LG Refrigerator with Door Cooling', price: '2815', color: 'White', available: 'Not Available', image: '/assets/' },
         { id: 6, name: 'Dell Inspiron One 27 Ryzen 7', price: '2145', color: 'White', available: 'Available', image: '/assets/' }
     ];
+
+    getProductTotal() {
+        return this.products.length;
+    }
+
+    getAvailableCount() {
+        return this.products.filter(x => x.available === 'Available').length;
+    }
+
+    getUnavailableCount() {
+        return this.products.filter(x => x.available !== 'Available').length;
+    }
 }
