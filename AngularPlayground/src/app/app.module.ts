@@ -14,6 +14,7 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { ProductsComponent } from './products/products.component';
 import { FilterComponent } from './filter/filter.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { FilterComponent } from './filter/filter.component';
         SearchComponent,
         ProductsComponent,
         FilterComponent,
+        CustomerListComponent,
     ],
     imports: [
         BrowserModule,
