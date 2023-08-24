@@ -2,3 +2,12 @@
 <!-- binding the keyup event allows angular to pick up the value change for display in the string interpolation below...-->
 <button (click)="sayHello(TemplateVariable1)">Say Hello</button>
 <p>{{ TemplateVariable1.value }}</p>
+
+<div>
+    <label>DOB: </label>
+    <input type="date" #dobInput (blur)="calculateAge()">
+</div>
+<div>
+    <label>Age: </label>
+    <input type="text" #ageInput>
+</div>
