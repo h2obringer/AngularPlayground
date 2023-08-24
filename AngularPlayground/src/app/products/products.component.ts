@@ -36,4 +36,9 @@ export class ProductsComponent {
     onProductFilterChanged(data: string) {
         this.productFilterSelection = data;
     }
+
+    searchText: string = '';
+    onSearchTextEntered(searchValue: string) {
+        this.searchText = searchValue;
+    }
 }
