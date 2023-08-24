@@ -16,6 +16,10 @@ export class FooterComponent {
         alert("Hello " + inputEl.value);
     }
 
+    viewChildComponentExample() {
+        console.log("This is an example of using a Component as a ViewChild.");
+    }
+
     calculateAge() {
         let birthYear: number = new Date(this.dateOfBirth.nativeElement.value).getFullYear();
         let currentYear: number = new Date().getFullYear();

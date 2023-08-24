@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
     selector: 'app-container',
@@ -7,8 +8,7 @@ import { Component } from '@angular/core';
 })
 export class ContainerComponent {
     constructor() { }
+    ngOnInit() { }
 
-    ngOnInit() {
-
-    }
+    @ViewChild(FooterComponent, { static: true }) footerComp: FooterComponent;
 }
