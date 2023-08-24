@@ -10,7 +10,7 @@ export class CustomerListComponent {
     constructor() { }
     ngOnInit(): void { }
 
-    // selectedCustomer;
+    selectedCustomer: Customer = new Customer();
 
     customers: Customer[] = [
         { customerNo: 1, name: 'Mark Vought', address: '', city: 'London', country: 'UK' },

@@ -6,5 +6,6 @@
     <app-notification></app-notification>
     <app-products></app-products>
     <app-footer></app-footer>
-    <app-customer-list></app-customer-list>
+    <app-customer-list #customer></app-customer-list>
+    <p>You have selected {{ customer.selectedCustomer.name }}</p>
 </div>
