@@ -1,3 +1,5 @@
+<ng-content select=".first"></ng-content>
+
 <input type="text" #TemplateVariable1 (keyup)="0">
 <!-- binding the keyup event allows angular to pick up the value change for display in the string interpolation below...-->
 <button (click)="sayHello(TemplateVariable1)">Say Hello</button>
@@ -11,3 +13,5 @@
     <label>Age: </label>
     <input type="text" #ageInput>
 </div>
+
+<ng-content select="#second-content"></ng-content>

@@ -3,9 +3,15 @@
     <div app-nav></div>
     <!-- <app-header></app-header> -->
     <div class="app-header"></div>
-    <app-notification></app-notification>
+    <app-notification>
+        <h4>ng-content part 1.1</h4>
+        <h5>ng-content part 1.2</h5>
+    </app-notification>
     <app-products></app-products>
-    <app-footer></app-footer>
+    <app-footer>
+        <p class="first">ng-content part 1</p>
+        <p id="second-content">ng-content part 2</p>
+    </app-footer>
     {{footerComp.viewChildComponentExample()}}
     <app-customer-list #customer></app-customer-list>
     <p>You have selected {{ customer.selectedCustomer.name }}</p>

@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
             This website uses cookies to provide better user experience.
             <div class="close"><button class="btn" (click)="closeNotification()">X</button></div>
         </div>
+        <ng-content></ng-content>
     `,
     styles: [
         `
