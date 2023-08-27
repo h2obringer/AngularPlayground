@@ -19,6 +19,7 @@ import { SetBackgroundDirective } from './CustomeDirectives/AttributeDirectives/
 import { HighlightDirective } from './CustomeDirectives/AttributeDirectives/highlight.directive';
 import { HoverDirective } from './CustomeDirectives/AttributeDirectives/hover.directive';
 import { Highlight2Directive } from './CustomeDirectives/AttributeDirectives/highlight2.directive';
+import { ClassDirective } from './CustomeDirectives/AttributeDirectives/class.directive';
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import { Highlight2Directive } from './CustomeDirectives/AttributeDirectives/hig
         HighlightDirective,
         HoverDirective,
         Highlight2Directive,
+        ClassDirective,
     ],
     imports: [
         BrowserModule,
