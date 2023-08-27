@@ -17,6 +17,7 @@ import { FilterComponent } from './filter/filter.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { SetBackgroundDirective } from './CustomeDirectives/AttributeDirectives/setbackground.directive';
 import { HighlightDirective } from './CustomeDirectives/AttributeDirectives/highlight.directive';
+import { HoverDirective } from './CustomeDirectives/AttributeDirectives/hover.directive';
 
 @NgModule({
     declarations: [
@@ -32,6 +33,7 @@ import { HighlightDirective } from './CustomeDirectives/AttributeDirectives/high
         CustomerListComponent,
         SetBackgroundDirective,
         HighlightDirective,
+        HoverDirective,
     ],
     imports: [
         BrowserModule,
