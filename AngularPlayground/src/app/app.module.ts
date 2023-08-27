@@ -18,6 +18,7 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { SetBackgroundDirective } from './CustomeDirectives/AttributeDirectives/setbackground.directive';
 import { HighlightDirective } from './CustomeDirectives/AttributeDirectives/highlight.directive';
 import { HoverDirective } from './CustomeDirectives/AttributeDirectives/hover.directive';
+import { Highlight2Directive } from './CustomeDirectives/AttributeDirectives/highlight2.directive';
 
 @NgModule({
     declarations: [
@@ -34,6 +35,7 @@ import { HoverDirective } from './CustomeDirectives/AttributeDirectives/hover.di
         SetBackgroundDirective,
         HighlightDirective,
         HoverDirective,
+        Highlight2Directive,
     ],
     imports: [
         BrowserModule,
