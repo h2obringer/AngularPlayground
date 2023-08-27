@@ -21,6 +21,7 @@ import { HoverDirective } from './CustomeDirectives/AttributeDirectives/hover.di
 import { Highlight2Directive } from './CustomeDirectives/AttributeDirectives/highlight2.directive';
 import { ClassDirective } from './CustomeDirectives/AttributeDirectives/class.directive';
 import { StyleDirective } from './CustomeDirectives/AttributeDirectives/styles.directive';
+import { IfDirective } from './CustomeDirectives/StructuralDirectives/if.directive';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import { StyleDirective } from './CustomeDirectives/AttributeDirectives/styles.d
         Highlight2Directive,
         ClassDirective,
         StyleDirective,
+        IfDirective,
     ],
     imports: [
         BrowserModule,

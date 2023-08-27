@@ -10,6 +10,8 @@ export class FooterComponent {
     constructor() { }
     ngOnInit(): void { }
 
+    display: boolean = false;
+
     @ViewChild('dobInput') dateOfBirth: ElementRef;
     @ViewChild('ageInput') age: ElementRef;
 
@@ -26,5 +28,9 @@ export class FooterComponent {
         let currentYear: number = new Date().getFullYear();
         let age = currentYear - birthYear;
         this.age.nativeElement.value = age;
+    }
+
+    displayNotice() {
+        this.display = true;
     }
 }

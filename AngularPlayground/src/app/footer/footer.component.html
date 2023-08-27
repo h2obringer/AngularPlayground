@@ -26,3 +26,9 @@
 <div [appStyle]="{backgroundColor: 'red', color: 'white', fontWeight: 'bold'}">
     <p>Create a custom ngStyle directive.</p>
 </div>
+
+<button class="btn btn-notice" (click)="displayNotice()">Show notice</button>
+<div class="info-container notice" *appIf="display">
+    <h3>This is a notice.</h3>
+    <p>This is a notice issues for all users.</p>
+</div>
