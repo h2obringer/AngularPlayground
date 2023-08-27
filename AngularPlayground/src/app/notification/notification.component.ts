@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ContentChild, ElementRef, OnInit, AfterContentInit } from '@angular/core';
 
 @Component({
     selector: 'app-notification',
@@ -41,11 +41,17 @@ import { Component } from '@angular/core';
         `
     ]
 })
-export class NotificationComponent {
+export class NotificationComponent implements OnInit, AfterContentInit {
     constructor() { }
 
-    ngOnInit(): void {
+    @ContentChild('ngcontent1') content1: ElementRef;
 
+    ngOnInit(): void {
+        //content1 is not initialized here...
+    }
+
+    ngAfterContentInit(): void {
+        console.log(this.content1.nativeElement.textContent);
     }
 
     isHidden: boolean = false;
