@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductsComponent } from './products/products.component';
 import { FilterComponent } from './filter/filter.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
+import { SetBackgroundDirective } from './CustomeDirectives/AttributeDirectives/setbackground.directive';
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
         ProductsComponent,
         FilterComponent,
         CustomerListComponent,
+        SetBackgroundDirective,
     ],
     imports: [
         BrowserModule,
