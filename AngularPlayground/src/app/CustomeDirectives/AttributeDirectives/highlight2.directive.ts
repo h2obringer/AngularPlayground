@@ -1,4 +1,4 @@
-import { Directive, OnInit, ElementRef, Renderer2, HostBinding, HostListener } from '@angular/core';
+import { Directive, OnInit, ElementRef, Renderer2, HostBinding, HostListener, Input } from '@angular/core';
 
 @Directive({
     selector: '[appHighlight2]'
@@ -6,20 +6,28 @@ import { Directive, OnInit, ElementRef, Renderer2, HostBinding, HostListener } f
 export class Highlight2Directive implements OnInit {
     constructor(private element: ElementRef, private renderer: Renderer2) { }
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        this.background = this.defaultColor;
+        this.border = this.defaultBorder;
+    }
 
-    @HostBinding('style.backgroundColor') background: string = 'transparent';
-    @HostBinding('style.border') border: string = 'none';
+    @Input() defaultColor: string = 'transparent';
+    @Input('appHighlight2') highlightColor: string = 'pink';
+    @Input() defaultBorder: string = 'none';
+    @Input() highlightBorder: string = 'red 2px solid';
+
+    @HostBinding('style.backgroundColor') background: string = this.defaultColor;
+    @HostBinding('style.border') border: string = this.defaultBorder;
 
     @HostListener('mouseenter')
     onmouseenter() {
-        this.background = 'pink';
-        this.border = 'red 20x solid';
+        this.background = this.highlightColor;
+        this.border = this.highlightBorder;
     }
 
     @HostListener('mouseleave')
     onmouseleave() {
-        this.background = 'transparent';
-        this.border = 'none';
+        this.background = this.defaultColor;
+        this.border = this.defaultBorder;
     }
 }
