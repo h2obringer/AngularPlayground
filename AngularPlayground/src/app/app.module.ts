@@ -16,6 +16,7 @@ import { ProductsComponent } from './products/products.component';
 import { FilterComponent } from './filter/filter.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { SetBackgroundDirective } from './CustomeDirectives/AttributeDirectives/setbackground.directive';
+import { HighlightDirective } from './CustomeDirectives/AttributeDirectives/highlight.directive';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { SetBackgroundDirective } from './CustomeDirectives/AttributeDirectives/
         FilterComponent,
         CustomerListComponent,
         SetBackgroundDirective,
+        HighlightDirective,
     ],
     imports: [
         BrowserModule,
