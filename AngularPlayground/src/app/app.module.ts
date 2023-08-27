@@ -20,6 +20,7 @@ import { HighlightDirective } from './CustomeDirectives/AttributeDirectives/high
 import { HoverDirective } from './CustomeDirectives/AttributeDirectives/hover.directive';
 import { Highlight2Directive } from './CustomeDirectives/AttributeDirectives/highlight2.directive';
 import { ClassDirective } from './CustomeDirectives/AttributeDirectives/class.directive';
+import { StyleDirective } from './CustomeDirectives/AttributeDirectives/styles.directive';
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import { ClassDirective } from './CustomeDirectives/AttributeDirectives/class.di
         HoverDirective,
         Highlight2Directive,
         ClassDirective,
+        StyleDirective,
     ],
     imports: [
         BrowserModule,
