@@ -23,6 +23,7 @@ import { ClassDirective } from './CustomeDirectives/AttributeDirectives/class.di
 import { StyleDirective } from './CustomeDirectives/AttributeDirectives/styles.directive';
 import { IfDirective } from './CustomeDirectives/StructuralDirectives/if.directive';
 import { EnrollService } from './Services/enroll.service';
+import { AdduserComponent } from './adduser/adduser.component';
 
 @NgModule({
     declarations: [
@@ -43,6 +44,7 @@ import { EnrollService } from './Services/enroll.service';
         ClassDirective,
         StyleDirective,
         IfDirective,
+        AdduserComponent,
     ],
     imports: [
         BrowserModule,

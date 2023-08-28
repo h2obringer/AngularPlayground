@@ -2,3 +2,18 @@
     margin: 0px auto;
     width: 820px;
 }
+
+.user-div {
+    display: flex;
+    margin: 5px 0px;
+}
+
+.user-name {
+    width: 80%;
+}
+
+.user-status {
+    width: 20%;
+    padding: 10px 40px;
+    background-color: #FAD808;
+}

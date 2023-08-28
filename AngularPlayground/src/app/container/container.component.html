@@ -11,6 +11,15 @@
     {{footerComp.viewChildComponentExample()}}
     <app-customer-list #customer></app-customer-list>
     <p>You have selected {{ customer.selectedCustomer.name }}</p>
+
+    <div class="container">
+        <app-adduser></app-adduser>
+        <div class="user-div" *ngFor="let user of users">
+            <div class="user-name">{{user.name}}</div>
+            <div class="user-status">{{user.isActive ? 'active' : 'inactive'}}</div>
+        </div>
+    </div>
+
     <app-footer>
         <p class="first">ng-content part 1</p>
         <p id="second-content">ng-content part 2</p>
