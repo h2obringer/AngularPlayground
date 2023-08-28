@@ -8,11 +8,11 @@
         <h5>ng-content part 1.2</h5>
     </app-notification>
     <app-products></app-products>
+    {{footerComp.viewChildComponentExample()}}
+    <app-customer-list #customer></app-customer-list>
+    <p>You have selected {{ customer.selectedCustomer.name }}</p>
     <app-footer>
         <p class="first">ng-content part 1</p>
         <p id="second-content">ng-content part 2</p>
     </app-footer>
-    {{footerComp.viewChildComponentExample()}}
-    <app-customer-list #customer></app-customer-list>
-    <p>You have selected {{ customer.selectedCustomer.name }}</p>
 </div>

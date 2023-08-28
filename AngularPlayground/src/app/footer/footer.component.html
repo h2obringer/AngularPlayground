@@ -32,3 +32,10 @@
     <h3>This is a notice.</h3>
     <p>This is a notice issues for all users.</p>
 </div>
+
+<div class="container" [ngSwitch]="occupation">
+    <p *ngSwitchCase="'teacher'">teacher</p>
+    <p *ngSwitchCase="'designer'">designer</p>
+    <p *ngSwitchCase="'lawyer'">lawyer</p>
+    <p *ngSwitchDefault>none/default</p>
+</div>

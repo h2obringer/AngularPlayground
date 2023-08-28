@@ -11,6 +11,7 @@ export class FooterComponent {
     ngOnInit(): void { }
 
     display: boolean = false;
+    occupation: string = 'teacher';
 
     @ViewChild('dobInput') dateOfBirth: ElementRef;
     @ViewChild('ageInput') age: ElementRef;
