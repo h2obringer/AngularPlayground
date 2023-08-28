@@ -22,7 +22,6 @@ import { Highlight2Directive } from './CustomeDirectives/AttributeDirectives/hig
 import { ClassDirective } from './CustomeDirectives/AttributeDirectives/class.directive';
 import { StyleDirective } from './CustomeDirectives/AttributeDirectives/styles.directive';
 import { IfDirective } from './CustomeDirectives/StructuralDirectives/if.directive';
-import { EnrollService } from './Services/enroll.service';
 
 @NgModule({
     declarations: [
@@ -51,9 +50,7 @@ import { EnrollService } from './Services/enroll.service';
         MatSlideToggleModule,
         FormsModule,
     ],
-    providers: [
-        EnrollService,
-    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

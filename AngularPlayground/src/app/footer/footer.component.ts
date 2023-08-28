@@ -5,11 +5,10 @@ import { EnrollService } from '../Services/enroll.service';
     selector: 'app-footer',
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.css'],
-    encapsulation: ViewEncapsulation.None,
-    providers: [EnrollService]
+    encapsulation: ViewEncapsulation.None
 })
 export class FooterComponent {
-    constructor(private enrollService: EnrollService) { }
+    constructor() { }
     ngOnInit(): void { }
 
     display: boolean = false;
@@ -38,6 +37,7 @@ export class FooterComponent {
     }
 
     OnEnroll() {
-        this.enrollService.OnEnrollClicked('Using a simple service here.');
+        const enrollService = new EnrollService();
+        enrollService.OnEnrollClicked('Using a simple service here.');
     }
 }
