@@ -6,7 +6,6 @@ import { EnrollService } from '../Services/enroll.service';
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.css'],
     encapsulation: ViewEncapsulation.None,
-    providers: [EnrollService],
 })
 export class FooterComponent {
     constructor(private enrollService: EnrollService) { }
