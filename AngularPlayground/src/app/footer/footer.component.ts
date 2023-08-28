@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
+import { EnrollService } from '../Services/enroll.service';
 
 @Component({
     selector: 'app-footer',
@@ -33,5 +34,10 @@ export class FooterComponent {
 
     displayNotice() {
         this.display = true;
+    }
+
+    OnEnroll() {
+        const enrollService = new EnrollService();
+        enrollService.OnEnrollClicked('Using a simple service here.');
     }
 }
