@@ -24,6 +24,9 @@ import { StyleDirective } from './CustomeDirectives/AttributeDirectives/styles.d
 import { IfDirective } from './CustomeDirectives/StructuralDirectives/if.directive';
 import { EnrollService } from './Services/enroll.service';
 import { AdduserComponent } from './adduser/adduser.component';
+import { LoggerService } from './Services/logger.service';
+import { AllusersComponent } from './allusers/allusers.component';
+import { UserdetailComponent } from './userdetail/userdetail.component';
 
 @NgModule({
     declarations: [
@@ -45,6 +48,8 @@ import { AdduserComponent } from './adduser/adduser.component';
         StyleDirective,
         IfDirective,
         AdduserComponent,
+        AllusersComponent,
+        UserdetailComponent,
     ],
     imports: [
         BrowserModule,
@@ -53,7 +58,7 @@ import { AdduserComponent } from './adduser/adduser.component';
         MatSlideToggleModule,
         FormsModule,
     ],
-    providers: [EnrollService],
+    providers: [EnrollService, LoggerService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
