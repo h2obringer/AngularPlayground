@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 import { LoggerService } from "./logger.service";
 
 @Injectable() //this allows us to inject the logger service dependency
@@ -17,9 +18,12 @@ export class UserService {
         this.logger.LogMessage(name, isActive);
     }
 
-    OnShowDetailsClicked = new EventEmitter<{ name: string, isActive: boolean, job: string, gender: string, age: number }>();
+    //this is an observable...
+    // OnShowDetailsClicked = new EventEmitter<{ name: string, isActive: boolean, job: string, gender: string, age: number }>();
+    OnShowDetailsClicked = new Subject<{ name: string, isActive: boolean, job: string, gender: string, age: number }>();
 
     ShowUserDetails(user: { name: string, isActive: boolean, job: string, gender: string, age: number }) {
-        this.OnShowDetailsClicked.emit(user);
+        // this.OnShowDetailsClicked.emit(user);
+        this.OnShowDetailsClicked.next(user);
     }
 }
