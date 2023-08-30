@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of, from } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 @Component({
     selector: 'app-root',
@@ -43,12 +44,36 @@ export class AppComponent implements OnInit {
     array1 = [6, 7, 8, 9, 10];
     array2 = ['F', 'G', 'H', 'I', 'J'];
 
+
+    //RXJS OPERATORS: https://rxjs.dev/guide/operators
+
     //method 3
     //will emit the arrays as is in each packet/chunk sent.
     myObservable3 = of(this.array1, this.array2); //will emit the passed in data and automatically send the complete signal once complete...
 
     //method 4
     myObservable4 = from(this.array1); //will emit the passed in data and automatically send the complete signal once complete... arrays will be iterated and the values emitted seperately.
+
+    //map takes a callback function that takes the source observable's emitted values
+    //map emits a new observable with the transformed data
+    transformedObservable = this.myObservable4.pipe(map((value) => {
+        return value * 5;
+    }));
+
+    //filter takes a callback function that takes the source observable's emitted values
+    //the callback should take the value and return a boolean, true values are returned in the result observable.
+    filteredObservable = this.transformedObservable.pipe(filter((value) => {
+        return value >= 30;
+    }));
+
+    //pipe can can multiple operators, the 1st will create a new observable and pass that observable to the 2nd operator which returns yet another new observable as the final returned observable.
+    chainedObservable = this.myObservable4.pipe(map((value) => {
+        return value * 6;
+    }), filter((value) => {
+        return value >= 40;
+    }));
+
+    //NOTE: .pipe can also be chained on calls to 'of' and 'from'
 
     ngOnInit(): void {
         //subscribe to the observable, log each chunk of data once it is
@@ -82,6 +107,30 @@ export class AppComponent implements OnInit {
             alert(error.message);
         }, () => {
             alert("Observable4 has completed emitting all values.");
+        });
+
+        this.transformedObservable.subscribe((val) => {
+            console.log(val);
+        }, (error) => {
+            alert(error.message);
+        }, () => {
+            alert("transformedObservable has completed emitting all values.");
+        });
+
+        this.filteredObservable.subscribe((val) => {
+            console.log(val);
+        }, (error) => {
+            alert(error.message);
+        }, () => {
+            alert("filteredObservable has completed emitting all values.");
+        });
+
+        this.chainedObservable.subscribe((val) => {
+            console.log(val);
+        }, (error) => {
+            alert(error.message);
+        }, () => {
+            alert("chainedObservable has completed emitting all values.");
         });
     }
 }
