@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, from } from 'rxjs';
+import { Observable, of, from, interval, Subscription } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
 @Component({
@@ -75,6 +75,9 @@ export class AppComponent implements OnInit {
 
     //NOTE: .pipe can also be chained on calls to 'of' and 'from'
 
+    counterObservable = interval(1000);
+    counterSubscription: Subscription;
+
     ngOnInit(): void {
         //subscribe to the observable, log each chunk of data once it is
         this.myObservable.subscribe((val) => {
@@ -131,6 +134,20 @@ export class AppComponent implements OnInit {
             alert(error.message);
         }, () => {
             alert("chainedObservable has completed emitting all values.");
+        });
+
+        this.subscribe();
+    }
+
+    unsubscribe() {
+        this.counterSubscription.unsubscribe();
+        console.log("unsubscribed!");
+    }
+
+    subscribe() {
+        //calling this multiple times will create multiple subscriptions, it is important that you unsubscribe from these when they are no longer needed
+        this.counterSubscription = this.counterObservable.subscribe((value) => {
+            console.log(value);
         });
     }
 }
