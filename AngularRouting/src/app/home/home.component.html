@@ -1,1 +1,19 @@
 <p>home works!</p>
+<div>
+    <button (click)="navigateToAbout()">Navigate to About Page (programmatically).</button>
+</div>
+<div>
+    <a [routerLink]="['Courses/Course/', 10]" [queryParams]="{editMode: true}">Navigate to Course 10.</a>
+</div>
+<div>
+    <button (click)="navigateToCourse()">Navigate to Course 10 (programmatically).</button>
+</div>
+<div>
+    <a [routerLink]="['/Home']" fragment="s2">Jump to Section 2.</a>
+</div>
+<div id="s1">
+    <h1>Section 1</h1>
+</div>
+<div id="s2">
+    <h1>Section 2</h1>
+</div>

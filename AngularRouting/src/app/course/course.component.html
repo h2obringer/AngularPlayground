@@ -1,0 +1,7 @@
+<div>
+    <h1>Selected Course ID: {{courseId}}</h1>
+</div>
+<div>
+    <button (click)="editMode=!editMode" [routerLink]="['/Courses/Course', 10]"
+        [queryParams]="{'editMode': editMode}">Switch Edit Mode</button>
+</div>

@@ -1,16 +1,17 @@
 <div class="main-container">
     <div class="nav-container">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Courses</a></li>
+            <!--Home would be marked active in all cases without the routerLinkActiveOptions attribute assignment because the URL is contained in the others...-->
+            <li [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}"><a routerLink="">Home</a></li>
+            <li [routerLinkActive]="'active'"><a routerLink="About">About</a></li>
+            <li [routerLinkActive]="'active'"><a routerLink="Contact">Contact</a></li>
+            <li [routerLinkActive]="'active'"><a [routerLink]="['Courses']">Courses</a></li>
+            <li [routerLinkActive]="'active'"><a routerLink="NonExistent">Error Page</a></li>
+            <!--href refreshes the entire app, we then loose all the app-state data, etc. Do not use href...-->
+            <li><a href="Home">Reload App</a></li>
         </ul>
     </div>
     <div class="component-container">
-        <app-home></app-home>
-        <app-about></app-about>
-        <app-contact></app-contact>
-        <app-courses></app-courses>
+        <router-outlet></router-outlet>
     </div>
 </div>
