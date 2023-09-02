@@ -9,6 +9,10 @@
     <button (click)="navigateToCourse()">Navigate to Course 10 (programmatically).</button>
 </div>
 <div>
+    <a [routerLink]="['CoursesChildrenRoutes/Course/', 10]">Navigate to Course 10 with
+        child routes.</a>
+</div>
+<div>
     <a [routerLink]="['/Home']" fragment="s2">Jump to Section 2.</a>
 </div>
 <div id="s1">
@@ -17,3 +21,4 @@
 <div id="s2">
     <h1>Section 2</h1>
 </div>
+<router-outlet></router-outlet>

@@ -17,6 +17,11 @@ const appRoute: Routes = [
     { path: 'Contact', component: ContactComponent },
     { path: 'Courses', component: CoursesComponent },
     { path: 'Courses/Course/:id', component: CourseComponent }, //example passing parameters to routes...
+    { //example child routes
+        path: 'CoursesChildrenRoutes', children: [
+            { path: 'Course/:id', component: CourseComponent }
+        ]
+    },
     { path: 'About', component: AboutComponent },
     { path: '**', component: ErrorComponent }, //wild card route - matches every route, should always go last
 ];
