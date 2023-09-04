@@ -27,6 +27,7 @@ import { AdduserComponent } from './adduser/adduser.component';
 import { LoggerService } from './Services/logger.service';
 import { AllusersComponent } from './allusers/allusers.component';
 import { UserdetailComponent } from './userdetail/userdetail.component';
+import { PercentagePipe } from './pipes/percentage.pipe';
 
 @NgModule({
     declarations: [
@@ -50,6 +51,7 @@ import { UserdetailComponent } from './userdetail/userdetail.component';
         AdduserComponent,
         AllusersComponent,
         UserdetailComponent,
+        PercentagePipe,
     ],
     imports: [
         BrowserModule,

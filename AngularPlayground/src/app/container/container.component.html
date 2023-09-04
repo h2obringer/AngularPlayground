@@ -13,6 +13,10 @@
     <p>You have selected {{ customer.selectedCustomer.name }}</p>
 
     <div class="container">
+        <p>Custom Pipe: {{10 | percentage: 100 : 2}}</p>
+    </div>
+
+    <div class="container">
         <app-adduser></app-adduser>
         <div class="user-div" *ngFor="let user of users">
             <div class="user-name">{{user.name | uppercase}}</div>
