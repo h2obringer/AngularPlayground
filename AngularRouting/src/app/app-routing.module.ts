@@ -1,4 +1,4 @@
-import { NgModule, inject } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
@@ -19,7 +19,7 @@ const appRoute: Routes = [
     //canDeactivate: defines whether or not the user can navigate away from the page to a different route based on the DeactivateRouteGuardService.canDeactivate() function.
     { path: 'Contact', component: ContactComponent, canActivate: [NavigationPermissionService], canDeactivate: [DeactivateRouteGuardService] },
     //resolve: 
-    { path: 'Courses', component: CoursesComponent, resolve: { 'courses': () => inject(ResolveRouteGuardService).resolve() } },
+    { path: 'Courses', component: CoursesComponent, resolve: { courses: ResolveRouteGuardService } },
     { path: 'Courses/Course/:id', component: CourseComponent }, //example passing parameters to routes...
     {
         //example child routes
@@ -35,7 +35,8 @@ const appRoute: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoute),
+        //enableTracing = true: this will log all navigation events that get triggered when navigating from one route to the other to the console.
+        RouterModule.forRoot(appRoute, { enableTracing: true }),
     ],
     exports: [
         RouterModule,

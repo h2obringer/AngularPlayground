@@ -8,7 +8,7 @@ export class CoursesService {
     ]
 
     getAllCourses(): any {
-        const courseList = new Promise((resolve, reject) => {
+        const courseList = new Promise<{ id: number, name: string }[]>((resolve, reject) => {
             setTimeout(() => {
                 resolve(this.courseListData);
             }, 5000);
