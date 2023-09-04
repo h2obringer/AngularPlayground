@@ -14,7 +14,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.fragmentSub = this.activatedRoute.fragment.subscribe((value) => {
-            document.getElementById(value).scrollIntoView({ behavior: 'smooth' });
+            if (value) {
+                document.getElementById(value).scrollIntoView({ behavior: 'smooth' });
+            }
         });
     }
 

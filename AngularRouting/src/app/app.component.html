@@ -9,6 +9,10 @@
             <li [routerLinkActive]="'active'"><a routerLink="NonExistent">Error Page</a></li>
             <!--href refreshes the entire app, we then loose all the app-state data, etc. Do not use href...-->
             <li><a href="Home">Reload App</a></li>
+            <span style="float: right">
+                <li><button (click)="login()">Login</button></li>
+                <li><button (click)="logout()">Logout</button></li>
+            </span>
         </ul>
     </div>
     <div class="component-container">

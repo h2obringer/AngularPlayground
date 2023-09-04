@@ -9,6 +9,12 @@ import { CoursesComponent } from './courses/courses.component';
 import { ErrorComponent } from './error/error.component';
 import { CourseComponent } from './course/course.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NavigationPermissionService } from './services/navigation-permissions.service';
+import { AuthService } from './services/auth.service';
+import { DeactivateRouteGuardService } from './services/deactivate-route-guard.service';
+import { FormsModule } from '@angular/forms';
+import { ResolveRouteGuardService } from './services/resolve-route-guard.service';
+import { CoursesService } from './services/courses.service';
 
 @NgModule({
     declarations: [
@@ -22,9 +28,10 @@ import { AppRoutingModule } from './app-routing.module';
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         AppRoutingModule,
     ],
-    providers: [],
+    providers: [AuthService, NavigationPermissionService, DeactivateRouteGuardService, ResolveRouteGuardService, CoursesService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

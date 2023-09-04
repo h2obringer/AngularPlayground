@@ -1,4 +1,21 @@
-<p>contact works!</p>
-
 <!--This is a relative path and will take us to localhost:4200/Contact/Home (which doesn't exist)-->
 <a routerLink="./Home">Go to Home Page.</a>
+
+<div class="container">
+    <div style="text-align: center">
+        <h2>Contact Us</h2>
+    </div>
+    <div class="row">
+        <div class="column">
+            <form>
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Your name..." [(ngModel)]="firstName">
+
+                <label for="fname">Last Name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Your name..." [(ngModel)]="lastName">
+
+                <input type="submit" value="submit">
+            </form>
+        </div>
+    </div>
+</div>
