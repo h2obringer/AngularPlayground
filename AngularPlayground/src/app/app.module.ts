@@ -28,6 +28,7 @@ import { LoggerService } from './Services/logger.service';
 import { AllusersComponent } from './allusers/allusers.component';
 import { UserdetailComponent } from './userdetail/userdetail.component';
 import { PercentagePipe } from './pipes/percentage.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
     declarations: [
@@ -52,6 +53,7 @@ import { PercentagePipe } from './pipes/percentage.pipe';
         AllusersComponent,
         UserdetailComponent,
         PercentagePipe,
+        FilterPipe,
     ],
     imports: [
         BrowserModule,

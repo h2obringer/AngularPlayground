@@ -11,6 +11,7 @@ export class CustomerListComponent {
     ngOnInit(): void { }
 
     selectedCustomer: Customer = new Customer();
+    filterText: string = '';
 
     customers: Customer[] = [
         { customerNo: 1, name: 'Mark Vought', address: '', city: 'London', country: 'UK' },
