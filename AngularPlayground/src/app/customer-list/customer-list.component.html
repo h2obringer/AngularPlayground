@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let customer of customers | filterCourse: filterText">
+            <tr *ngFor="let customer of filteredCustomers">
                 <td>{{customer.customerNo}}</td>
                 <td>{{customer.name}}</td>
                 <td>{{customer.address}}</td>
