@@ -44,6 +44,13 @@
                 Music</label>
         </div>
 
+        <div formArrayName="skills">
+            <ng-container *ngFor="let skill of reactiveForm.get('skills')['controls']; index as i">
+                <input type="text" placeholder="add skill..." formControlName="{{i}}">
+            </ng-container>
+            <button (click)="addSkill()">+ Add Skill</button>
+        </div>
+
         <input type="submit" value="Submit" id="btn"><!--[disabled]="!myForm.valid"-->
     </form>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
     selector: 'app-root',
@@ -37,7 +37,15 @@ export class AppComponent implements OnInit {
             isSportsHobby: new FormControl(null),
             isMoviesHobby: new FormControl(null),
             isMusicHobby: new FormControl(null),
+            skills: new FormArray([
+                new FormControl(null, Validators.required),
+            ]),
         });
+    }
+
+    addSkill() {
+        //<FormArray> = typecasting
+        (<FormArray>this.reactiveForm.get('skills')).push(new FormControl(null, Validators.required));
     }
 
     onSubmit() {
