@@ -12,6 +12,11 @@ export class CustomerListComponent {
     selectedCustomer: Customer = new Customer();
     _filterText: string = '';
     filteredCustomers: Customer[];
+    asyncWarning = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('Are you still there? (Async pipe example)');
+        }, 2000);
+    });
 
     customers: Customer[] = [
         { customerNo: 1, name: 'Mark Vought', address: '', city: 'London', country: 'UK' },
