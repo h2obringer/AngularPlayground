@@ -28,8 +28,8 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.reactiveForm = new FormGroup({
             personalDetails: new FormGroup({
-                firstName: new FormControl(null, Validators.required),
-                lastName: new FormControl(null, Validators.required),
+                firstName: new FormControl(null, [Validators.required, this.noSpaceAllowed]),
+                lastName: new FormControl(null, [Validators.required, this.noSpaceAllowed]),
                 email: new FormControl(null, [Validators.required, Validators.email]),
             }),
             gender: new FormControl(this.defaultGender),
@@ -46,6 +46,14 @@ export class AppComponent implements OnInit {
     addSkill() {
         //<FormArray> = typecasting
         (<FormArray>this.reactiveForm.get('skills')).push(new FormControl(null, Validators.required));
+    }
+
+    //custom validator
+    noSpaceAllowed(control: FormControl) {
+        if (control.value != null && control.value.indexOf(' ') !== -1) {
+            return { noSpaceAllowed: true }; //noSpaceAllowed is the name of our unique error code
+        }
+        return null;
     }
 
     onSubmit() {

@@ -6,8 +6,10 @@
             <input type="text" id="fname" name="fname" placeholder="First name..." formControlName="firstName">
             <div>
                 <small
-                    *ngIf="reactiveForm.get('personalDetails.firstName').invalid && reactiveForm.get('personalDetails.firstName').touched">
+                    *ngIf="reactiveForm.get('personalDetails.firstName').errors?.['required'] && reactiveForm.get('personalDetails.firstName').touched">
                     First Name is required.</small>
+                <small *ngIf="reactiveForm.get('personalDetails.firstName').errors?.['noSpaceAllowed']">
+                    First Name cannot contain a space.</small>
             </div>
 
             <label for="lname">Last Name</label>
