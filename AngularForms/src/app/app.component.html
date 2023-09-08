@@ -5,7 +5,7 @@
         <div ngModelGroup="personalDetails" #personalDetail="ngModelGroup">
             <!-- ngForm.values.personalDetails.fname, .lname, .email, etc...-->
             <label for="fname">First Name</label>
-            <input type="text" id="fname" name="fname" placeholder="First name..." [(ngModel)]="firstName" required
+            <input type="text" id="fname" name="fname" placeholder="First name..." [ngModel]="firstName" required
                 #fname="ngModel">
             <!-- <div>
                 <small *ngIf="fname.invalid && fname.touched">First Name is required.</small>
@@ -13,7 +13,7 @@
             </div> -->
 
             <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lname" placeholder="Last name..." [(ngModel)]="lastName" required
+            <input type="text" id="lname" name="lname" placeholder="Last name..." (ngModel)="lastName" required
                 #lname="ngModel">
             <!-- <div>
                 <small *ngIf="lname.invalid && lname.touched">Last Name is required.</small>
@@ -21,8 +21,7 @@
             </div> -->
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Email address..." [(ngModel)]="email" required
-                email>
+            <input type="email" id="email" name="email" placeholder="Email address..." [ngModel]="email" required email>
 
             <div>
                 <small *ngIf="personalDetail.invalid && personalDetail.touched">Some of the required fields do not have
@@ -42,7 +41,7 @@
         <br>
 
         <label for="gender">Gender:</label>
-        <span *ngFor="let gen of gender">
+        <span *ngFor="let gen of genderList">
             <input type="radio" id="{{gen.id}}" value="{{gen.value}}" name="gender" [ngModel]="defaultGender">
             <label for="{{gen.id}}">{{gen.value}}</label>
         </span>
@@ -57,4 +56,13 @@
 
         <input type="submit" value="Submit" id="btn"><!--[disabled]="!myForm.valid"-->
     </form>
+</div>
+
+<div class="form-data">
+    <h3>Form Data</h3>
+    <p>First Name: <b>{{firstName}}</b></p>
+    <p>Last Name: <b>{{lastName}}</b></p>
+    <p>Email: <b>{{email}}</b></p>
+    <p>Country: <b>{{country}}</b></p>
+    <p>Gender: <b>{{gender}}</b></p>
 </div>

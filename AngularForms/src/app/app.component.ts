@@ -8,17 +8,20 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
     title = 'AngularForms';
+    country: string = '';
     defaultCountry = 'usa';
     firstName: string;
     lastName: string;
     email: string = '';
-    gender = [
+    gender: string = '';
+    defaultGender: string = 'Male';
+    @ViewChild('myForm') form: NgForm;
+
+    genderList = [
         { id: 1, value: 'Male' },
         { id: 2, value: 'Female' },
         { id: 3, value: 'Other' }
     ];
-    defaultGender: string = 'Male';
-    @ViewChild('myForm') form: NgForm;
 
     setDefaultValues() {
         //NOTE: the structure of the object here must match the structure of the form.value section inside the ngForm object.
@@ -47,6 +50,14 @@ export class AppComponent {
     }
 
     onSubmit() {
-        console.log(this.form);
+        // console.log(this.form);
+        this.firstName = this.form.value.personalDetails.fname;
+        this.lastName = this.form.value.personalDetails.lname;
+        this.email = this.form.value.personalDetails.email;
+        this.country = this.form.value.country;
+        this.gender = this.form.value.gender;
+
+        //reset the form here...
+        this.form.reset();
     }
 }
