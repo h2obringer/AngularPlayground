@@ -1,24 +1,34 @@
 <div class="form">
     <h2 id="registration">Registration Form</h2>
     <form (ngSubmit)="onSubmit()" #myForm="ngForm">
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" name="fname" placeholder="First name..." [(ngModel)]="firstName" required
-            #fname="ngModel">
-        <div>
-            <small *ngIf="fname.invalid && fname.touched">First Name is required.</small>
-            <span>You entered: {{firstName}}</span>
-        </div>
+        <!--form groups allow us to validate the values together-->
+        <div ngModelGroup="personalDetails" #personalDetail="ngModelGroup">
+            <!-- ngForm.values.personalDetails.fname, .lname, .email, etc...-->
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" placeholder="First name..." [(ngModel)]="firstName" required
+                #fname="ngModel">
+            <!-- <div>
+                <small *ngIf="fname.invalid && fname.touched">First Name is required.</small>
+                <span>You entered: {{firstName}}</span>
+            </div> -->
 
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" name="lname" placeholder="Last name..." [(ngModel)]="lastName" required
-            #lname="ngModel">
-        <div>
-            <small *ngIf="lname.invalid && lname.touched">Last Name is required.</small>
-            <span *ngIf="lastName && lastName.length > 0">You entered: {{lastName}}</span>
-        </div>
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" placeholder="Last name..." [(ngModel)]="lastName" required
+                #lname="ngModel">
+            <!-- <div>
+                <small *ngIf="lname.invalid && lname.touched">Last Name is required.</small>
+                <span *ngIf="lastName && lastName.length > 0">You entered: {{lastName}}</span>
+            </div> -->
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Email address..." [(ngModel)]="email" required email>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Email address..." [(ngModel)]="email" required
+                email>
+
+            <div>
+                <small *ngIf="personalDetail.invalid && personalDetail.touched">Some of the required fields do not have
+                    valid data.</small>
+            </div>
+        </div>
 
         <label for="country">Country</label>
         <select id="country" name="country" [ngModel]="defaultCountry">
@@ -45,6 +55,6 @@
             <label><input type="checkbox" value="music" name="isMusicHobby" ngModel> Music</label>
         </div>
 
-        <input type="submit" value="Submit" id="btn" [disabled]="!myForm.valid">
+        <input type="submit" value="Submit" id="btn"><!--[disabled]="!myForm.valid"-->
     </form>
 </div>
