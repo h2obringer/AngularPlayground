@@ -28,6 +28,7 @@
                 <small *ngIf="personalDetail.invalid && personalDetail.touched">Some of the required fields do not have
                     valid data.</small>
             </div>
+            <button (click)="setDefaultValues()">Set Default Values</button>
         </div>
 
         <label for="country">Country</label>
