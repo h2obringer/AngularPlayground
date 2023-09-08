@@ -8,6 +8,10 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
     title = 'AngularForms';
+    defaultCountry = 'usa';
+    firstName: string;
+    lastName: string;
+    email: string = '';
     @ViewChild('myForm') form: NgForm;
 
     onSubmit() {
