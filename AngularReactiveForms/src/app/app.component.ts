@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Profile, PersonalDetails } from './profile';
 
 @Component({
     selector: 'app-root',
@@ -30,6 +31,8 @@ export class AppComponent implements OnInit {
         { id: 2, value: 'Female' },
         { id: 3, value: 'Other' }
     ];
+
+    allProfiles: Profile[];
 
     ngOnInit(): void {
         this.reactiveForm = new FormGroup({
@@ -100,7 +103,7 @@ export class AppComponent implements OnInit {
             });
         }, 4000);
 
-        this.http.get('https://someserver.com/getProfiles')
+        this.http.get<{ [key: string]: Profile }>('https://someserver.com/getProfiles')
             //transform the response if needed here with pipe and map...
             .pipe(map((response) => {
                 const profiles = [];
@@ -113,6 +116,7 @@ export class AppComponent implements OnInit {
             }))
             .subscribe({
                 next: (response) => {
+                    this.allProfiles = response;
                     console.log(response);
                 },
                 error: (e) => {
@@ -121,10 +125,7 @@ export class AppComponent implements OnInit {
                 complete: () => {
                     console.log("Request completed.");
                 }
-            })
-
-
-
+            });
     }
 
     addSkill() {
@@ -153,6 +154,20 @@ export class AppComponent implements OnInit {
         });
 
         return response;
+    }
+
+    onDelete(id: number) {
+        this.http.delete('https://someserver.com/deleteProfile').subscribe({
+            next: (response) => {
+                console.log(response);
+            },
+            error: (e) => {
+                console.error(e);
+            },
+            complete: () => {
+                console.log("Request completed.");
+            }
+        })
     }
 
     onSubmit() {
