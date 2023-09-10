@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { Observable, Observer } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -98,6 +99,32 @@ export class AppComponent implements OnInit {
                 country: this.defaultCountry,
             });
         }, 4000);
+
+        this.http.get('https://someserver.com/getProfiles')
+            //transform the response if needed here with pipe and map...
+            .pipe(map((response) => {
+                const profiles = [];
+                for (const key in response) {
+                    if (response.hasOwnProperty(key)) {
+                        profiles.push({ ...response[key], id: key }); //spread operator spreads 
+                    }
+                }
+                return profiles;
+            }))
+            .subscribe({
+                next: (response) => {
+                    console.log(response);
+                },
+                error: (e) => {
+                    console.error(e);
+                },
+                complete: () => {
+                    console.log("Request completed.");
+                }
+            })
+
+
+
     }
 
     addSkill() {
