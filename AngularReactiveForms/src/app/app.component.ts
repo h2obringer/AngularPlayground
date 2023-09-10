@@ -175,6 +175,20 @@ export class AppComponent implements OnInit {
         })
     }
 
+    onUpdate(id: number, value: Profile) {
+        this.http.put('https://someserver.com/updateProfile/' + id, value).subscribe({
+            next: (response) => {
+                console.log(response);
+            },
+            error: (e) => {
+                console.error(e);
+            },
+            complete: () => {
+                console.log("Request completed.");
+            }
+        })
+    }
+
     onSubmit() {
         console.log(this.reactiveForm);
 
