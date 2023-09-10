@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+//Best Practice: Page Components should only contain code related to the user interface, therefore moving http requests to a service class is ideal to keep the code in this file small
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Profile, PersonalDetails } from './profile';
 
 @Component({
@@ -103,6 +106,7 @@ export class AppComponent implements OnInit {
             });
         }, 4000);
 
+        //Best practice would be to put this in a service class
         this.http.get<{ [key: string]: Profile }>('https://someserver.com/getProfiles')
             //transform the response if needed here with pipe and map...
             .pipe(map((response) => {
@@ -156,8 +160,9 @@ export class AppComponent implements OnInit {
         return response;
     }
 
+    //Best practice would be to put this in a service class
     onDelete(id: number) {
-        this.http.delete('https://someserver.com/deleteProfile').subscribe({
+        this.http.delete('https://someserver.com/deleteProfile/' + id).subscribe({
             next: (response) => {
                 console.log(response);
             },
@@ -188,6 +193,7 @@ export class AppComponent implements OnInit {
         //         }
         // );
 
+        //Best practice would be to put this in a service class
         this.http.post('https://someserver.com/profile', this.reactiveForm.value, { headers: headers })
             .subscribe({
                 next: (response) => {
