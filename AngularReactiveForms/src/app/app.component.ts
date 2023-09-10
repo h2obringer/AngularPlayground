@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     email: string = '';
     gender: string = '';
     defaultGender: string = 'Male';
+    formStatus: string = '';
 
     genderList = [
         { id: 1, value: 'Male' },
@@ -41,6 +42,29 @@ export class AppComponent implements OnInit {
             skills: new FormArray([
                 new FormControl(null, Validators.required),
             ]),
+        });
+
+        //valueChanges event returns an Observable that we can subscribe to...
+
+        //subscribe to changes on a single form value
+        // this.reactiveForm.get('personalDetails.firstName').valueChanges.subscribe((value) => {
+        //     console.log(value);
+        // });
+
+        //subscribe to changes on an entire form group
+        this.reactiveForm.get('personalDetails').valueChanges.subscribe((value) => {
+            console.log(value);
+        });
+
+        //statusChanges event returns an Observalbe that we can subscribe to...
+        this.reactiveForm.statusChanges.subscribe((value) => {
+            //possible values:
+            // "INVALID"
+            // "PENDING"
+            // "VALID"
+            this.formStatus = value;
+
+            console.log(value);
         });
     }
 
