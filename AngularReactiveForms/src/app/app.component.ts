@@ -66,6 +66,35 @@ export class AppComponent implements OnInit {
 
             console.log(value);
         });
+
+        //use of setTimeout here to show that default values can be set in a delayed manner as well...
+        // setTimeout(() => {
+        //     //the structure of the object sent to setValue must match the object of the form
+        //     this.reactiveForm.setValue({
+        //         personalDetails: {
+        //             firstName: '',
+        //             lastName: '',
+        //             email: 'abc@example.com'
+        //         },
+        //         gender: this.defaultGender,
+        //         country: this.defaultCountry,
+        //         isSportsHobby: true,
+        //         isMusicHobby: false,
+        //         isMoviesHobby: true,
+        //         skills: []
+        //     });
+        // }, 4000);
+
+        setTimeout(() => {
+            //the structure of the object sent to setValue must match the object of the form
+            this.reactiveForm.patchValue({
+                personalDetails: {
+                    email: 'abc@example.com'
+                },
+                gender: this.defaultGender,
+                country: this.defaultCountry,
+            });
+        }, 4000);
     }
 
     addSkill() {
@@ -98,5 +127,20 @@ export class AppComponent implements OnInit {
 
     onSubmit() {
         console.log(this.reactiveForm);
+
+        //reset accepts the same arguments as setValue() in order to reset to some default value set.
+        this.reactiveForm.reset({
+            personalDetails: {
+                firstName: '',
+                lastName: '',
+                email: 'abc@example.com'
+            },
+            gender: this.defaultGender,
+            country: this.defaultCountry,
+            isSportsHobby: true,
+            isMusicHobby: false,
+            isMoviesHobby: true,
+            skills: []
+        });
     }
 }
