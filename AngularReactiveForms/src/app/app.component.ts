@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
     selector: 'app-root',
@@ -8,6 +9,8 @@ import { Observable } from 'rxjs';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+    constructor(private http: HttpClient) { }
+
     title = 'AngularReactiveForms';
 
     reactiveForm: FormGroup;
@@ -127,6 +130,34 @@ export class AppComponent implements OnInit {
 
     onSubmit() {
         console.log(this.reactiveForm);
+
+        const headers = new HttpHeaders({ 'myHeader': 'procademy' }); //passing this data into this.http.post() is optional...
+        // DEPRECATED VERSION
+        // this.http.post('https://someserver.com/profile', this.reactiveForm.value, { headers: headers })
+        //     .subscribe(
+        //         (response) => {
+        //             console.log(response);
+        //         },
+        //         (error) => {
+        //             console.log(error);
+        //         },
+        //         () => {
+        //             console.log('Request completed');
+        //         }
+        // );
+
+        this.http.post('https://someserver.com/profile', this.reactiveForm.value, { headers: headers })
+            .subscribe({
+                next: (response) => {
+                    console.log(response);
+                },
+                error: (e) => {
+                    console.error(e);
+                },
+                complete: () => {
+                    console.log("Request completed.");
+                }
+            });
 
         //reset accepts the same arguments as setValue() in order to reset to some default value set.
         this.reactiveForm.reset({
