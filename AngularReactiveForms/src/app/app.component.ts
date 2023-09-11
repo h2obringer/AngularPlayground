@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ProfileService } from './profile.service';
 
 //Best Practice: Page Components should only contain code related to the user interface, therefore moving http requests to a service class is ideal to keep the code in this file small
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -13,8 +14,8 @@ import { Profile, PersonalDetails } from './profile';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-    constructor(private http: HttpClient) { }
+export class AppComponent implements OnInit, OnDestroy {
+    constructor(private http: HttpClient, private profileService: ProfileService) { }
 
     title = 'AngularReactiveForms';
 
@@ -36,6 +37,8 @@ export class AppComponent implements OnInit {
     ];
 
     allProfiles: Profile[];
+    errorMsg: string = '';
+    errorSubscription: Subscription;
 
     ngOnInit(): void {
         this.reactiveForm = new FormGroup({
@@ -107,29 +110,27 @@ export class AppComponent implements OnInit {
         }, 4000);
 
         //Best practice would be to put this in a service class
-        this.http.get<{ [key: string]: Profile }>('https://someserver.com/getProfiles')
-            //transform the response if needed here with pipe and map...
-            .pipe(map((response) => {
-                const profiles = [];
-                for (const key in response) {
-                    if (response.hasOwnProperty(key)) {
-                        profiles.push({ ...response[key], id: key }); //spread operator spreads 
-                    }
-                }
-                return profiles;
-            }))
+        this.profileService.getProfiles()
             .subscribe({
                 next: (response) => {
                     this.allProfiles = response;
                     console.log(response);
                 },
                 error: (e) => {
-                    console.error(e);
+                    this.profileService.error.next(e);
                 },
                 complete: () => {
                     console.log("Request completed.");
                 }
             });
+
+        this.errorSubscription = this.profileService.error.subscribe((message) => {
+            this.errorMsg = message;
+        })
+    }
+
+    ngOnDestroy(): void {
+        this.errorSubscription.unsubscribe();
     }
 
     addSkill() {
@@ -162,64 +163,15 @@ export class AppComponent implements OnInit {
 
     //Best practice would be to put this in a service class
     onDelete(id: number) {
-        this.http.delete('https://someserver.com/deleteProfile/' + id).subscribe({
-            next: (response) => {
-                console.log(response);
-            },
-            error: (e) => {
-                console.error(e);
-            },
-            complete: () => {
-                console.log("Request completed.");
-            }
-        })
+        this.profileService.deleteProfile(id);
     }
 
     onUpdate(id: number, value: Profile) {
-        this.http.put('https://someserver.com/updateProfile/' + id, value).subscribe({
-            next: (response) => {
-                console.log(response);
-            },
-            error: (e) => {
-                console.error(e);
-            },
-            complete: () => {
-                console.log("Request completed.");
-            }
-        })
+        this.profileService.updateProfile(id, value);
     }
 
     onSubmit() {
-        console.log(this.reactiveForm);
-
-        const headers = new HttpHeaders({ 'myHeader': 'procademy' }); //passing this data into this.http.post() is optional...
-        // DEPRECATED VERSION
-        // this.http.post('https://someserver.com/profile', this.reactiveForm.value, { headers: headers })
-        //     .subscribe(
-        //         (response) => {
-        //             console.log(response);
-        //         },
-        //         (error) => {
-        //             console.log(error);
-        //         },
-        //         () => {
-        //             console.log('Request completed');
-        //         }
-        // );
-
-        //Best practice would be to put this in a service class
-        this.http.post('https://someserver.com/profile', this.reactiveForm.value, { headers: headers })
-            .subscribe({
-                next: (response) => {
-                    console.log(response);
-                },
-                error: (e) => {
-                    console.error(e);
-                },
-                complete: () => {
-                    console.log("Request completed.");
-                }
-            });
+        this.profileService.createProfile(this.reactiveForm.value);
 
         //reset accepts the same arguments as setValue() in order to reset to some default value set.
         this.reactiveForm.reset({
