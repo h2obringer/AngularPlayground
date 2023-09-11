@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Profile } from './profile';
@@ -43,7 +43,11 @@ export class ProfileService {
     }
 
     getProfiles(): Observable<Profile[]> {
-        return this.http.get<{ [key: string]: Profile }>('https://someserver.com/getProfiles')
+        const headers = new HttpHeaders()
+            .set('content-type', 'application/json')
+            .set('Access-Control-Allow-Origin', '*'); //allow cross origin resource sharing
+
+        return this.http.get<{ [key: string]: Profile }>('https://someserver.com/getProfiles?print=pretty', { headers: headers })
             //transform the response if needed here with pipe and map...
             .pipe(map((response) => {
                 const profiles = [];
@@ -63,7 +67,13 @@ export class ProfileService {
     }
 
     deleteProfile(id: number) {
-        this.http.delete('https://someserver.com/deleteProfile/' + id).subscribe({
+        let headers = new HttpHeaders();
+        headers = headers.append('content-type', 'application/json');
+        headers = headers.append('Access-Control-Allow-Origin', '*'); //allow cross origin resource sharing
+
+        const params = new HttpParams().set('print', 'pretty');
+
+        this.http.delete('https://someserver.com/deleteProfile/' + id, { headers: headers, params: params }).subscribe({
             next: (response) => {
                 console.log(response);
             },
@@ -77,7 +87,10 @@ export class ProfileService {
     }
 
     updateProfile(id: number, value: Profile) {
-        this.http.put('https://someserver.com/updateProfile/' + id, value).subscribe({
+        let params = new HttpParams();
+        params = params.append('print', 'pretty');
+
+        this.http.put('https://someserver.com/updateProfile/' + id, value, { params: params }).subscribe({
             next: (response) => {
                 console.log(response);
             },
